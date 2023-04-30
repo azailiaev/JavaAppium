@@ -11,12 +11,11 @@ import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-@Epic("Tests for articles")
+@Epic("Article tests")
 public class ArticleTests extends CoreTestCase
 {
     @Test
     @DisplayName("Compare article title")
-    @Description("Compare article title with expected text")
     @Step("Starting test 'testCompareArticleTitle'")
     public void testCompareArticleTitle()
     {
@@ -35,7 +34,6 @@ public class ArticleTests extends CoreTestCase
 
     @Test
     @DisplayName("Compare article title without waiting")
-    @Description("Compare article title with expected text without waiting the element")
     @Step("Starting test 'testCompareArticleTitleWithoutWaiting'")
     public void testCompareArticleTitleWithoutWaiting()
     {
@@ -54,7 +52,6 @@ public class ArticleTests extends CoreTestCase
 
     @Test
     @DisplayName("Swipe article")
-    @Description("Swipe article to footer")
     @Step("Starting test 'testSwipeArticle'")
     public void testSwipeArticle()
     {

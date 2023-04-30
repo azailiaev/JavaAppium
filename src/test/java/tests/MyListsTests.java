@@ -1,6 +1,9 @@
 package tests;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.*;
@@ -11,6 +14,7 @@ import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
+@Epic("Tests for saving and deleting articles")
 public class MyListsTests extends CoreTestCase {
     private static final String name_of_folder = "Learning programming";
     private static final String
@@ -18,6 +22,8 @@ public class MyListsTests extends CoreTestCase {
             password = "qweasd234";
 
     @Test
+    @DisplayName("Save single article")
+    @Step("Starting test 'testSaveArticle'")
     public void testSaveArticle() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
@@ -75,6 +81,8 @@ public class MyListsTests extends CoreTestCase {
     }
 
     @Test
+    @DisplayName("Save two article than delete one of them")
+    @Step("Starting test 'testSaveTwoArticlesThanDeleteOne'")
     public void testSaveTwoArticlesThanDeleteOne() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();

@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.ArticlePageObject;
@@ -11,9 +14,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+@Epic("Search tests")
 public class SearchTests extends CoreTestCase
 {
     @Test
+    @DisplayName("Search field input")
+    @Step("Starting test 'testSendKeys'")
     public void testSendKeys()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -23,6 +29,8 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @DisplayName("Cancel search")
+    @Step("Starting test 'testCancelSearch'")
     public void testCancelSearch()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -33,6 +41,8 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @DisplayName("Amount of not empty search")
+    @Step("Starting test 'testAmountOfNotEmptySearch'")
     public void testAmountOfNotEmptySearch()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -47,6 +57,8 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @DisplayName("Amount of empty search")
+    @Step("Starting test 'testAmountOfEmptySearch'")
     public void testAmountOfEmptySearch()
     {
         String search_line2 = "sdjkhhvfkjdfbkdfngbjkfd";
@@ -59,6 +71,8 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @DisplayName("Find articles then clear search field")
+    @Step("Starting test 'testFindArticlesThenClearSearchField'")
     public void testFindArticlesThenClearSearchField()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -91,6 +105,8 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @DisplayName("Search by title and description")
+    @Step("Starting test 'testSearchByTitleAndDescription'")
     public void testSearchByTitleAndDescription() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
