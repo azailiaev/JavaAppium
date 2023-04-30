@@ -17,7 +17,6 @@ public class SearchTests extends CoreTestCase
     public void testSendKeys()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        ///SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.waitForSearchResult("Object-oriented programming language");
@@ -27,7 +26,6 @@ public class SearchTests extends CoreTestCase
     public void testCancelSearch()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        ///SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         SearchPageObject.waitForCancelButtonToAppear();
         SearchPageObject.clickCancelSearch();
@@ -37,14 +35,11 @@ public class SearchTests extends CoreTestCase
     @Test
     public void testAmountOfNotEmptySearch()
     {
-
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         String search_line = "Linkin Park discography";
         SearchPageObject.typeSearchLine(search_line);
         int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
-
         Assert.assertTrue(
                 "We found to few results",
                 amount_of_search_results > 0
@@ -56,7 +51,6 @@ public class SearchTests extends CoreTestCase
     {
         String search_line2 = "sdjkhhvfkjdfbkdfngbjkfd";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         String search_line = "sdjkhhvfkjdfbkdfngbjkfd";
         SearchPageObject.typeSearchLine(search_line);
@@ -73,28 +67,24 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.waitForSearchResult("Java (programming language)");
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
-
         String article_title1 = ArticlePageObject.getFirstArticleTitleInList();
         Assert.assertEquals(
                 "Article title not found",
                 "Java (programming language)",
                 article_title1
         );
-
         String article_title2 = ArticlePageObject.getSecondArticleTitleInList();
         Assert.assertEquals(
                 "Article title not found",
                 "JavaScript",
                 article_title2
         );
-
         String article_title3 = ArticlePageObject.getThirdArticleTitleInList();
         Assert.assertEquals(
                 "Article title not found",
                 "Java (software platform)",
                 article_title3
         );
-
         SearchPageObject.clearSearchField();
         if (Platform.getInstance().isAndroid()) {
             SearchPageObject.assertThereIsNoResultOfSearch();
@@ -106,7 +96,6 @@ public class SearchTests extends CoreTestCase
     @Test
     public void testSearchByTitleAndDescription() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         String search_line = "Java";
         SearchPageObject.typeSearchLine(search_line);

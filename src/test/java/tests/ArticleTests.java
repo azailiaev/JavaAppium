@@ -23,16 +23,11 @@ public class ArticleTests extends CoreTestCase
     public void testCompareArticleTitle()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        ///SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
-
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String article_title = ArticlePageObject.getArticleTitle();
-
-        ///ArticlePageObject.takeScreenshot("article_page");
-
         Assert.assertEquals(
                 "We see unexpected title",
                 "Java (programming language)",
@@ -49,11 +44,9 @@ public class ArticleTests extends CoreTestCase
     public void testCompareArticleTitleWithoutWaiting()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        ///SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
-
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String article_title = ArticlePageObject.getArticleTitleWithoutWaiting();
         Assert.assertEquals(
@@ -70,11 +63,9 @@ public class ArticleTests extends CoreTestCase
     public void testSwipeArticle()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-        ///SearchPageObject.clickSkipButton();
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
-
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();

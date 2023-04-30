@@ -23,11 +23,9 @@ public class MyListsTests extends CoreTestCase {
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
-
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         String article_title = ArticlePageObject.getArticleTitle();
-
         if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
@@ -39,9 +37,7 @@ public class MyListsTests extends CoreTestCase {
             Auth.clickAuthButton();
             Auth.enterLoginData(login, password);
             Auth.submitForm();
-
             ArticlePageObject.waitForTitleElement();
-
             Assert.assertEquals("We are not on the same page after login.",
                     article_title,
                     ArticlePageObject.getArticleTitle()
@@ -50,16 +46,12 @@ public class MyListsTests extends CoreTestCase {
             ArticlePageObject.addArticlesToMySaved();
         }
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
-
         NavigationUI.openNavigation();
-
         MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
-
         if (Platform.getInstance().isAndroid()) {
             NavigationUI.clickViewList();
             MyListsPageObject.openFolderByName(name_of_folder);
         }
-
         MyListsPageObject.swipeArticleToDelete(article_title);
     }
 
@@ -69,11 +61,9 @@ public class MyListsTests extends CoreTestCase {
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
-
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         String article_title = ArticlePageObject.getArticleTitle();
-
         if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else if (Platform.getInstance().isIOS()) {
@@ -86,13 +76,10 @@ public class MyListsTests extends CoreTestCase {
             Auth.clickAuthButton();
             Auth.enterLoginData(login, password);
             Auth.submitForm();
-
             String url = driver.getCurrentUrl();
             String new_url = url.substring(0,11) + "m." + url.substring(11);
             driver.get(new_url);
-
             ArticlePageObject.waitForTitleElement();
-
             Assert.assertEquals("We are not on the same page after login.",
                     article_title,
                     ArticlePageObject.getArticleTitle()
@@ -102,26 +89,20 @@ public class MyListsTests extends CoreTestCase {
                 ArticlePageObject.addArticlesToMySaved();
             }
         }
-
         SearchPageObject.searchIcon();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Set of computer software and specifications");
-
         if (Platform.getInstance().isAndroid()){
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
             ArticlePageObject.addArticlesToMySaved();
         }
-
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
-
         MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
-
         if (Platform.getInstance().isAndroid()){
             NavigationUI.clickViewList();
             MyListsPageObject.openFolderByName(name_of_folder);
         }
-
         if ((Platform.getInstance().isAndroid()) || (Platform.getInstance().isIOS()))
         {
             MyListsPageObject.swipeArticleToDelete(article_title);
