@@ -65,7 +65,7 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.initSearchInput();
         String search_line = "Java";
         SearchPageObject.typeSearchLine(search_line);
-        SearchPageObject.waitForSearchResult("Java (programming language)");
+        SearchPageObject.waitForSearchResult("Object-oriented programming language");
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String article_title1 = ArticlePageObject.getFirstArticleTitleInList();
         Assert.assertEquals(
@@ -85,12 +85,9 @@ public class SearchTests extends CoreTestCase
                 "Java (software platform)",
                 article_title3
         );
-        SearchPageObject.clearSearchField();
-        if (Platform.getInstance().isAndroid()) {
-            SearchPageObject.assertThereIsNoResultOfSearch();
-        } else {
-            ArticlePageObject.titleElementNotFound();
-        }
+        SearchPageObject.waitForElementAndClick("css:body > div.mw-overlays-container > div > div.overlay-header-container.header-container.header-chrome.position-fixed > div > div.header-action > button", "Error", 5);
+        Platform.getInstance().isAndroid();
+        SearchPageObject.assertThereIsNoResultOfSearch();
     }
 
     @Test
@@ -99,9 +96,24 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.initSearchInput();
         String search_line = "Java";
         SearchPageObject.typeSearchLine(search_line);
-        SearchPageObject.assertAtLeastThreeArticles();
-        SearchPageObject.waitForElementByTitleAndDescription("Java (programming language)", "Object-oriented programming language");
-        SearchPageObject.waitForElementByTitleAndDescription("JavaScript", "High-level programming language");
-        SearchPageObject.waitForElementByTitleAndDescription("Java (software platform)", "Set of computer software and specifications");
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
+        String article_title1 = ArticlePageObject.getFirstArticleTitleInList();
+        Assert.assertEquals(
+                "Article title not found",
+                "Java (programming language)",
+                article_title1
+        );
+        String article_title2 = ArticlePageObject.getSecondArticleTitleInList();
+        Assert.assertEquals(
+                "Article title not found",
+                "JavaScript",
+                article_title2
+        );
+        String article_title3 = ArticlePageObject.getThirdArticleTitleInList();
+        Assert.assertEquals(
+                "Article title not found",
+                "Java (software platform)",
+                article_title3
+        );
     }
 }

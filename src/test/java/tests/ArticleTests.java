@@ -11,15 +11,13 @@ import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-@Epic("Test for articles")
+@Epic("Tests for articles")
 public class ArticleTests extends CoreTestCase
 {
     @Test
-    @Features(value = {@Feature(value = "Search"),@Feature(value = "Article")})
     @DisplayName("Compare article title")
     @Description("Compare article title with expected text")
     @Step("Starting test 'testCompareArticleTitle'")
-    @Severity(value = SeverityLevel.BLOCKER)
     public void testCompareArticleTitle()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -36,11 +34,9 @@ public class ArticleTests extends CoreTestCase
     }
 
     @Test
-    @Features(value = {@Feature(value = "Search"),@Feature(value = "Article")})
     @DisplayName("Compare article title without waiting")
     @Description("Compare article title with expected text without waiting the element")
     @Step("Starting test 'testCompareArticleTitleWithoutWaiting'")
-    @Severity(value = SeverityLevel.MINOR)
     public void testCompareArticleTitleWithoutWaiting()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);

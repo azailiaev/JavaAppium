@@ -73,25 +73,34 @@ abstract public class ArticlePageObject extends MainPageObject {
 
     public String getArticleTitleWithoutWaiting() {
         WebElement title_element = doNotWaitForTitleElement();
-        return title_element.getAttribute("text");
+        if (Platform.getInstance().isAndroid()) {
+            return title_element.getAttribute("text");
+        } else if (Platform.getInstance().isIOS()){
+            return title_element.getAttribute("name");
+        } else {
+            return title_element.getText();
+        }
     }
 
     public String getFirstArticleTitleInList() {
         WebElement title_first_element_in_list = waitForFirstTitleElementInList();
         if (Platform.getInstance().isAndroid()) {
             return title_first_element_in_list.getAttribute("text");
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             return title_first_element_in_list.getAttribute("name");
+        } else {
+            return title_first_element_in_list.getText();
         }
-
     }
 
     public String getSecondArticleTitleInList() {
         WebElement title_second_element_in_list = waitForSecondTitleElementInList();
         if (Platform.getInstance().isAndroid()) {
             return title_second_element_in_list.getAttribute("text");
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             return title_second_element_in_list.getAttribute("name");
+        } else {
+            return title_second_element_in_list.getText();
         }
     }
 
@@ -99,8 +108,10 @@ abstract public class ArticlePageObject extends MainPageObject {
         WebElement title_third_element_in_list = waitForThirdTitleElementInList();
         if (Platform.getInstance().isAndroid()) {
             return title_third_element_in_list.getAttribute("text");
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             return title_third_element_in_list.getAttribute("name");
+        } else {
+            return title_third_element_in_list.getText();
         }
     }
 
